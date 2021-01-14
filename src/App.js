@@ -4,6 +4,8 @@ import './App.css';
 
 import Header from './Components/Header';
 
+import TransformersSection from './Containers/TransformersSection'
+
 export default class App extends React.Component {
   state = {
     proptimusLogo: 'https://i.pinimg.com/originals/f8/7d/ec/f87dec9d6334af383a27f73e48ccf154.png',
@@ -22,13 +24,24 @@ export default class App extends React.Component {
         name: 'omega',
         url: 'http://pngimg.com/uploads/transformers/transformers_PNG3.png'
       }
-    ]
+    ],
+    display: false
+  }
+
+  displayBots = () => {
+    console.log("whoop")
+    this.setState({display: true})
   }
 
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header displayBots={this.displayBots} logo={this.state.proptimusLogo}/>
+        
+        {this.state.display === true ?
+        <TransformersSection content={this.state.proptimusii}/> :
+        null}
+        
       </div>
     );
   }
